@@ -21,10 +21,10 @@ Curently it's F2 or F10 or Fn with n a number defind be the cunstructor so check
 
 If your bios have a deep-sleep parameter disable it.
 
-#### ENABLE Wake On LAN
+#### ENABLE WOLAN
 
 Look for Wake on LAN and enable it.
-Maybe you have a laptop and want to wake on LAN when power cable is unplugged so enable WOLAN
+Maybe you have a laptop and want to WOLAN when power cable is unplugged so enable WOLAN
 
 ### OS SETUP
 
@@ -61,7 +61,8 @@ Activate WOLAN of your network interface, here enp4s0.
     ethtool -s enp4s0 wol g
 #### Prepare the WOLAN service.
 
-A service also call deamon is a background program, the WOLAN service will listen the port 9 in UDP to WOLAN if the pc get the request
+A service also call deamon is a background program, 
+the WOLAN service will listen the port 9 in UDP to WOLAN if the pc get the request
 
 First create wol.service file like this :
 
@@ -94,6 +95,8 @@ Then reboot
     reboot
 
 ## On other PC
+Type all the command in SuperUser or with sudo at the beginning
+
 Install wakeonlan.
 
 *Ubuntu :*
