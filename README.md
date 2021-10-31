@@ -27,5 +27,4 @@ Maybe you have a laptop and want to wake on LAN when power cable is unplugged so
 
 # On other PC
 
-* *ubuntu*
-  sudo apt-get install ethtool
+sudo apt-get install ethtool
