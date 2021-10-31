@@ -7,7 +7,7 @@ Start your pc, laptop, server remotely on your network or on internet Wake On LA
 
 ### BIOS SETUP
 
-First you need parameter your BIOS.
+First you need to setting your BIOS.
 
 Each BIOS is built different so take your time.
 
@@ -15,7 +15,7 @@ Each BIOS is built different so take your time.
 
 If fastboot option on the BIOS was disable you might saw the button to press to enter BIOS
 
-Curently it's F2 or F10 or Fn with n a number defind be the cunstructor so check out the data sheet of your pc or just try every Fn button
+Currently it's F2 or F10 or FX with X a number defined be the constructor so check out the data sheet of your pc or just try every Fn button
 
 #### DISABLE DEEP-SLEEP
 
@@ -24,7 +24,7 @@ If your bios have a deep-sleep parameter disable it.
 #### ENABLE WOLAN
 
 Look for Wake on LAN and enable it.
-Maybe you have a laptop and want to WOLAN when power cable is unplugged so enable WOLAN
+Maybe you have a laptop and want to WOLAN when power cable is unplugged so enable WOLAN 
 
 ### OS SETUP
 
