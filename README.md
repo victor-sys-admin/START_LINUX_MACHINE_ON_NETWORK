@@ -81,8 +81,9 @@ Write down :
 
     [Install]
     WantedBy=basic.target
-To save with nano Ctrl o
-To exit with nano Ctrl x
+To save with nano Ctrl o.
+
+To exit with nano Ctrl x.
 
 reload the sercive
 
@@ -113,7 +114,7 @@ On your other pc type and replace xx:xx:xx:xx:xx:xx by the MAC address of your t
  
     wakeonlan xx:xx:xx:xx:xx:xx
 # WAN part
-Connect to your router get the external IPv4 address (exemple of IPv4 address 84.127.245.90) write down this address.
+Connect to your router, get the external IPv4 address (exemple of IPv4 address 84.127.245.90) write down this address.
 
 Search your target machine, once you have find it thanks to MAC address write out his name.
 
