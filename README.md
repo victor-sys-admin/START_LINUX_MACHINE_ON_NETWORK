@@ -10,6 +10,7 @@ First you need to enable and disable some parameters in the bios each BIOS is bu
 ### To acces BIOS
 
 If fastboot option on the BIOS was disable you might saw the button to press to enter BIOS
+
 Curently it's F2 or F10 or Fn with n a number defind be the cunstructor so check out the data sheet of your pc or just try every Fn button
 
 ### DISABLE DEEP-SLEEP
@@ -23,6 +24,13 @@ Maybe you have a laptop and want to wake on LAN when power cable is unplugged so
 
 ## OS SETUP
 
+### Get the MAC adress also call ethernet adress
+
+MAC or ethernet adress is an adress of a network card (layer 2 of the OSI model).
+
+To get this adress I personaly use
+
+    ifconfig
 
 
 # On other PC
