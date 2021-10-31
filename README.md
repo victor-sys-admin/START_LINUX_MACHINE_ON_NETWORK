@@ -1,5 +1,5 @@
 # Start Linux machine on LAN/WAN
-Start your pc, laptop, server remotely on your network or on internet Wake On LAN (WOLAN) / Wake On WAN (WOWAN)
+Start your pc, laptop, server remotely on your network or on internet Wake On LAN (WOLAN) / Wake On WAN (WOWAN).
 
 # LAN part
 
@@ -7,7 +7,9 @@ Start your pc, laptop, server remotely on your network or on internet Wake On LA
 
 ### BIOS SETUP
 
-First you need to enable and disable some parameters in the bios each BIOS is built different so take your time
+First you need parameter your BIOS.
+
+Each BIOS is built different so take your time.
 
 #### To acces BIOS
 
@@ -28,11 +30,11 @@ Maybe you have a laptop and want to wake on LAN when power cable is unplugged so
 
 Type all the command in SuperUser or with sudo at the beginning
 
-#### Get the MAC adress also call ethernet adress
+#### Get the MAC address also call ethernet address
 
-MAC or ethernet adress is an adress of a network card (layer 2 of the OSI model).
+MAC or ethernet address is an address of a network card (layer 2 of the OSI model).
 
-To get this adress I personaly use
+To get this address I personaly use
 
     ifconfig
 
@@ -43,17 +45,56 @@ The other card should be call *ethX* with X a number or *enpXsY* with X and Y tw
 But you search only an active card so search *RUNNING*, example :
 
     eth0: flags=xxxx<UP,BROADCAST,RUNNING,MULTICAST>
-this card should have a MAC adress ( ether line xx:xx:xx:xx:xx:xx) write down this adress.
+this card should have a MAC address ( ether line xx:xx:xx:xx:xx:xx) write down this address.
 
+#### Get your network card ready for WOLAN
+
+Install ethtool.
 *On ubuntu :*
 
     apt-get install ethtool
 *On fedora :*
 
     dnf install ethtool
+Activate WOLAN of your network interface, here enp4s0.
+
+    ethtool -s enp4s0 wol g
+#### Prepare the WOLAN service.
+
+A service also call deamon is a background program, the WOLAN service will listen the port 9 in UDP to WOLAN if the pc get the request
+
+First create wol.service file like this :
+
+    touch /etc/systemd/system/wol.service
+Then edit this file with nano for exemple :
+
+    nano /etc/systemd/system/wol.service
+Write down :
+
+    [Unit]
+    Description=Configure Wake On Lan
+
+    [Service]
+    Type=oneshot
+    ExecStart=/sbin/ethtool -s enp4s0 wol g
+
+    [Install]
+    WantedBy=basic.target
+To save with nano Ctrl o
+To exit with nano Ctrl x
+
+reload the sercive
+
+    systemctl daemon-reload
+activate it
+
+    systemctl enable wol.service
+Then reboot
+
+    reboot
 
 ## On other PC
-In SuperUser or with sudo.
+Install wakeonlan.
 
 *Ubuntu :*
 
@@ -62,5 +103,29 @@ In SuperUser or with sudo.
 *Fedora :*
 
     dnf install wakeonlan
+To WOLAN the pc target, shutdown the pc target by typing on his terminal :
 
+    shutdown -h now
+On your other pc type and replace xx:xx:xx:xx:xx:xx by the MAC address of your target pc:
+ 
+    wakeonlan xx:xx:xx:xx:xx:xx
 # WAN part
+Connect to your router get the external IPv4 address (exemple of IPv4 address 84.127.245.90) write down this address.
+
+Search your target machine, once you have find it thanks to MAC address write out his name.
+
+Then search NAT/PAT settings, create new rule :
+* app/service : new (call it WOWAN for exemple)
+* internal port : 9
+* external port : 9
+* protocole : UDP
+* device : (your target divice)
+
+To WOWAN the pc target, shutdown the pc target by typing on his terminal :
+
+    shutdown -h now
+On your other pc you need to be on an other distant network, 
+type and replace yyy.yyy.yyy.yyy by the IPv4 address of your 
+router and xx:xx:xx:xx:xx:xx by the MAC address of your target pc:
+ 
+    wakeonlan -i yyy.yyy.yyy.yyy xx:xx:xx:xx:xx:xx
