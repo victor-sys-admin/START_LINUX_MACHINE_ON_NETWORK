@@ -26,5 +26,6 @@ Maybe you have a laptop and want to wake on LAN when power cable is unplugged so
 
 
 # On other PC
+run the following command:
 
-sudo apt-get install ethtool
+    ip a | grep "2: "
