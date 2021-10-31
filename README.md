@@ -26,6 +26,9 @@ Maybe you have a laptop and want to wake on LAN when power cable is unplugged so
 
 
 # On other PC
-run the following command:
+In SuperUser or with sudo.
+* *Ubuntu*
+    apt-get install wakeonlan
 
-    ip a | grep "2: "
+* *Fedora*
+    dnf install wakeonlan
