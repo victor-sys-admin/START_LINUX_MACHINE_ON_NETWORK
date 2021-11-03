@@ -44,11 +44,13 @@ You can get this command by adding net-tools
 From there you can see your networks cards 
 
 *lo* for loopback we don't need the information for this card.
+
 The other card should be call *ethX* with X a number or *enpXsY* with X and Y two numbers.
+
 But you search only an active card so search *RUNNING*, example :
 
-    eth0: flags=xxxx<UP,BROADCAST,RUNNING,MULTICAST>
-this card should have a MAC address ( ether line xx:xx:xx:xx:xx:xx) write down this address.
+    eth0: flags=xxxx<UP,BROADCAST,**RUNNING**,MULTICAST>
+this card should have a MAC address ( ether ... xx:xx:xx:xx:xx:xx) write down this address.
 
 #### Get your network card ready for WOLAN
 
