@@ -1,4 +1,4 @@
-# Start Linux machine on LAN/WAN
+# Start Debian based Linux machine on LAN/WAN
 Start your pc, laptop, server remotely on your network or on internet Wake On LAN (WOLAN) / Wake On WAN (WOWAN).
 
 # LAN part
@@ -37,6 +37,9 @@ MAC or ethernet address is an address of a network card (layer 2 of the OSI mode
 To get this address I personaly use
 
     ifconfig
+You can get this command by adding net-tools
+
+    apt-get install net-tools
 
 From there you can see your networks cards 
 
@@ -50,12 +53,8 @@ this card should have a MAC address ( ether line xx:xx:xx:xx:xx:xx) write down t
 #### Get your network card ready for WOLAN
 
 Install ethtool.
-*On ubuntu :*
 
     apt-get install ethtool
-*On fedora :*
-
-    dnf install ethtool
 Activate WOLAN of your network interface, here enp4s0.
 
     ethtool -s enp4s0 wol g
@@ -100,13 +99,7 @@ Type all the command in SuperUser or with sudo at the beginning
 
 Install wakeonlan.
 
-*Ubuntu :*
-
     apt-get install wakeonlan
-
-*Fedora :*
-
-    dnf install wakeonlan
 To WOLAN the pc target, shutdown the pc target by typing on his terminal :
 
     shutdown -h now
