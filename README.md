@@ -49,7 +49,7 @@ The other card should be call *ethX* with X a number or *enpXsY* with X and Y tw
 
 But you search only an active card so search *RUNNING*, example :
 
-    eth0: flags=xxxx<UP,BROADCAST,**RUNNING**,MULTICAST>
+    eth0: flags=xxxx<UP,BROADCAST,RUNNING,MULTICAST>
 this card should have a MAC address ( ether ... xx:xx:xx:xx:xx:xx) write down this address.
 
 #### Get your network card ready for WOLAN
@@ -57,9 +57,9 @@ this card should have a MAC address ( ether ... xx:xx:xx:xx:xx:xx) write down th
 Install ethtool.
 
     apt-get install ethtool
-Activate WOLAN of your network interface, here enp4s0.
+Activate WOLAN of your network interface, here eth0.
 
-    ethtool -s enp4s0 wol g
+    ethtool -s eth0 wol g
 #### Prepare the WOLAN service.
 
 A service also call deamon is a background program, 
@@ -71,14 +71,14 @@ First create wol.service file like this :
 Then edit this file with nano for exemple :
 
     nano /etc/systemd/system/wol.service
-Write down :
+Write down the following content, don't forget to change your network card (here eth0) :
 
     [Unit]
     Description=Configure Wake On Lan
 
     [Service]
     Type=oneshot
-    ExecStart=/sbin/ethtool -s enp4s0 wol g
+    ExecStart=/sbin/ethtool -s eth0 wol g
 
     [Install]
     WantedBy=basic.target
